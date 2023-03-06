@@ -15,7 +15,6 @@ import java.util.List;
 public class MangeStudentController {
     @Autowired
     StudentService studentService;
-
     /**
      * Retrieves a list of all students.
      *
