@@ -1,6 +1,7 @@
 package com.InstituteManagementSystem.Institute.Management.System.Service;
 
 import com.InstituteManagementSystem.Institute.Management.System.Model.Student;
+import com.InstituteManagementSystem.Institute.Management.System.Model.Teacher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -36,13 +37,13 @@ public class StudentService {
                     return student.id == id;
                 }).findFirst();
 
-        if (foundStudent.isPresent()){
-            logger.info("student with id: " + id + " found") ;
+        if (foundStudent.isPresent()) {
+            logger.info("Get student with id: " + id);
             return foundStudent.get();
-        }
-        else
+        } else
             return null;
     }
+
     /**
      * Registers a new student.
      *
@@ -59,7 +60,7 @@ public class StudentService {
     /**
      * Updates an existing student's information.
      *
-     * @param id  The ID of the student to be updated.
+     * @param id             The ID of the student to be updated.
      * @param updatedStudent The updated Student object with the new information.
      * @return A Student object representing the updated student.
      */
@@ -67,7 +68,7 @@ public class StudentService {
         Student foundStudent = getStudent(id);
         foundStudent.name = updatedStudent.name;
         foundStudent.email = updatedStudent.email;
-        logger.info("Student with id: " + updatedStudent.id +"updated");
+        logger.info("Student with id: " + updatedStudent.id + "updated");
         return foundStudent;
     }
 
@@ -80,12 +81,17 @@ public class StudentService {
     public Student deleteStudent(int id) {
         Student foundStudent = getStudent(id);
         listOfStudent.remove(foundStudent);
-        logger.info("Student with id: " + foundStudent.id +" deleted");
+        logger.info("Student with id: " + foundStudent.id + " deleted");
         return foundStudent;
     }
 
-   public List<Student> listOfStudent = new CopyOnWriteArrayList<>();
-
+    /**
+     * The list of student managed by this service.
+     */
+    public List<Student> listOfStudent = new CopyOnWriteArrayList<>();
+    /**
+     * The current ID to assign to the next registered student.
+     */
     private int currrentID = 1;
 
     private static final Logger logger = LoggerFactory.getLogger(StudentService.class);
