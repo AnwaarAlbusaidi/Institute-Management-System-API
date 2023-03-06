@@ -41,7 +41,6 @@ public class TeacherService {
                 (teacher) -> {
                     return teacher.id == id;
                 }).findFirst();
-
         if (foundTeacher.isPresent())
             return foundTeacher.get();
         else

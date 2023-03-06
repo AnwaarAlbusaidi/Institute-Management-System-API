@@ -1,6 +1,8 @@
 package com.InstituteManagementSystem.Institute.Management.System.Service;
 
 import com.InstituteManagementSystem.Institute.Management.System.Model.Student;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,17 +14,13 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 @Service
 public class StudentService {
-
-    List<Student> listOfStudent = new CopyOnWriteArrayList<>();
-
-    int currrentID = 1;
-
     /**
      * Retrieves a list of all students.
      *
      * @return A List of Student objects representing all the students.
      */
     public List<Student> getListOfStudent() {
+        logger.info("Getting all student");
         return listOfStudent;
     }
 
@@ -38,8 +36,10 @@ public class StudentService {
                     return student.id == id;
                 }).findFirst();
 
-        if (foundStudent.isPresent())
+        if (foundStudent.isPresent()){
+            logger.info("student with id: " + id + " found") ;
             return foundStudent.get();
+        }
         else
             return null;
     }
@@ -52,13 +52,14 @@ public class StudentService {
     public Student registerStudent(Student student) {
         student.id = this.currrentID++;
         listOfStudent.add(student);
+        logger.info("Created student with id: " + student.id);
         return student;
     }
 
     /**
      * Updates an existing student's information.
      *
-     * @param id             The ID of the student to be updated.
+     * @param id  The ID of the student to be updated.
      * @param updatedStudent The updated Student object with the new information.
      * @return A Student object representing the updated student.
      */
@@ -66,7 +67,7 @@ public class StudentService {
         Student foundStudent = getStudent(id);
         foundStudent.name = updatedStudent.name;
         foundStudent.email = updatedStudent.email;
-
+        logger.info("Student with id: " + updatedStudent.id +"updated");
         return foundStudent;
     }
 
@@ -79,7 +80,13 @@ public class StudentService {
     public Student deleteStudent(int id) {
         Student foundStudent = getStudent(id);
         listOfStudent.remove(foundStudent);
+        logger.info("Student with id: " + foundStudent.id +" deleted");
         return foundStudent;
     }
 
+   public List<Student> listOfStudent = new CopyOnWriteArrayList<>();
+
+    private int currrentID = 1;
+
+    private static final Logger logger = LoggerFactory.getLogger(StudentService.class);
 }
