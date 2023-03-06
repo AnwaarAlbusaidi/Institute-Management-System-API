@@ -92,5 +92,9 @@ public class TeacherService {
      * The current ID to assign to the next registered teacher.
      */
     int currrentID = 1;
+    /**
+     * This line creates a logger instance with the class name "StudentService" to log messages.The logger instance can
+     *  be used to log messages of varying levels of severity, such as debug, info, warn, and error
+     */
     private static final Logger logger = LoggerFactory.getLogger(StudentService.class);
 }

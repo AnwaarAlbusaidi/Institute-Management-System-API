@@ -45,3 +45,8 @@
 2023-03-06 14:17:09.005 INFO  c.I.I.M.S.Service.StudentService - Created student with id: 2
 2023-03-06 14:17:13.640 INFO  c.I.I.M.S.Service.StudentService - Created student with id: 3
 2023-03-06 14:17:17.420 INFO  c.I.I.M.S.Service.StudentService - student with id: 2 found
+2023-03-06 14:28:42.723 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.InstituteManagementSystem.Institute.Management.System.InstituteManagementSystemApplicationTests]: InstituteManagementSystemApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-03-06 14:28:42.825 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.InstituteManagementSystem.Institute.Management.System.InstituteManagementSystemApplication for test class com.InstituteManagementSystem.Institute.Management.System.InstituteManagementSystemApplicationTests
+2023-03-06 14:28:43.282 INFO  c.I.I.M.S.InstituteManagementSystemApplicationTests - Starting InstituteManagementSystemApplicationTests using Java 17.0.2 with PID 15628 (started by LAP-8 in C:\Users\LAP-8\IdeaProjects\Institute Management System\Institute-Management-System)
+2023-03-06 14:28:43.283 INFO  c.I.I.M.S.InstituteManagementSystemApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2023-03-06 14:28:45.816 INFO  c.I.I.M.S.InstituteManagementSystemApplicationTests - Started InstituteManagementSystemApplicationTests in 2.786 seconds (process running for 4.0)
